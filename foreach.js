@@ -230,7 +230,25 @@ function findUniq(arr) {
     for (let i = 0; i < arr.length; i++) {
         return arr.find(num => num !== arr[i]);
     }
+};
+
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+
+// Note: a and b are not ordered!
+
+
+// the only solution that works is the recusion solution
+function getSum(a,b) {
+    if (a === b) return a;
+
+    if (a < b) {
+        return a + getSum(a+1, b)
+    } else {
+        return a + getSum(a-1,b);
+    }
+
 }
+
 
 
 
