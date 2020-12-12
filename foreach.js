@@ -251,4 +251,42 @@ function getSum(a,b) {
 
 
 
+//object literals and classes
+const book = {
+    title: 'Book One',
+    author: 'John Doe',
+    year: '2013',
+    getSummary: function() {
+        return `${this.title} was written by ${this.author} in ${this.year}`
+    },
+};
 
+//what if we wanted to create more than one book? We could copy the book object and change the
+// relevant information 
+
+const bookTwo = {
+    title: 'Book Two',
+    author: 'Jane Doe',
+    year: '2016',
+    getSummary: function() {
+        return `${this.title} was written by ${this.author} in ${this.year}`
+    },
+};
+
+console.log(Object.keys(book)); // returns keys of the object passed in
+console.log(Object.values(book)); //returns values of the object pass in
+
+// this way there is a lot of repeated code, use classes and constructors to only write code once
+function Book(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+    this.getSummary = function() {
+        return `${this.title} was written by ${this.author} in ${this.year}`
+    };
+}
+
+//instantiate object:
+const bookThree = new Book();
+//when you create a new object, it runs whatever is in the Book constructor.
+const bookFour = new Book('Title', 'Author', 'year')
