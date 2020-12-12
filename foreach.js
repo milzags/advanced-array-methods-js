@@ -251,42 +251,115 @@ function getSum(a,b) {
 
 
 
-//object literals and classes
-const book = {
-    title: 'Book One',
-    author: 'John Doe',
-    year: '2013',
-    getSummary: function() {
+// //object literals and classes
+// const book = {
+//     title: 'Book One',
+//     author: 'John Doe',
+//     year: '2013',
+//     getSummary: function() {
+//         return `${this.title} was written by ${this.author} in ${this.year}`
+//     },
+// };
+
+// //what if we wanted to create more than one book? We could copy the book object and change the
+// // relevant information 
+
+// const bookTwo = {
+//     title: 'Book Two',
+//     author: 'Jane Doe',
+//     year: '2016',
+//     getSummary: function() {
+//         return `${this.title} was written by ${this.author} in ${this.year}`
+//     },
+// };
+
+// console.log(Object.keys(book)); // returns keys of the object passed in
+// console.log(Object.values(book)); //returns values of the object pass in
+
+// // this way there is a lot of repeated code, use classes and constructors to only write code once
+// function Book(title, author, year) {
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;
+// }    
+
+// //instantiate object:
+// const bookThree = new Book();
+// //when you create a new object, it runs whatever is in the Book constructor.
+// const bookFour = new Book('Title', 'Author', '2013')
+
+// //summary prototype method
+// Book.prototype.getSummary = function() {
+//     return `${this.title} was written by ${this.author} in ${this.year}`
+// }
+
+// Book.prototype.getAge = function() {
+//     const years = new Date().getFullYear() - this.year;
+//     return `${this.title} was written ${years} years ago.`
+// }
+
+// Book.prototype.revise = function(newYear) {
+//     this.year = newYear;
+//     this.revise = true;
+// }
+
+// console.log(bookFour.getSummary())
+// console.log(bookFour.getAge())
+// console.log(bookFour.revise('2015'));
+
+// //Inheritance
+
+
+// //magazine constructor 
+// function Magazine(title, author, year, month) {
+//     Book.call(this, title, author, year);
+//     this.month = month;
+// }
+// //to inherit prototype of books:
+// Magazine.prototype = Object.create(Book.prototype);
+
+
+// //instantiate Magazine Object:
+// const mag1 = new Magazine('Mag One', 'John Doe', '2018', 'Jan');
+
+class Book {
+    constructor(title, author, year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+
+    getSummary() {
         return `${this.title} was written by ${this.author} in ${this.year}`
-    },
-};
+    }
 
-//what if we wanted to create more than one book? We could copy the book object and change the
-// relevant information 
+    getAge() {
+        return `${this.title} was written ${years} years ago.`
+    }
 
-const bookTwo = {
-    title: 'Book Two',
-    author: 'Jane Doe',
-    year: '2016',
-    getSummary: function() {
-        return `${this.title} was written by ${this.author} in ${this.year}`
-    },
-};
+    revise(newYear) { 
+        this.year = newYear;
+        this.revise = true;
+    }
 
-console.log(Object.keys(book)); // returns keys of the object passed in
-console.log(Object.values(book)); //returns values of the object pass in
-
-// this way there is a lot of repeated code, use classes and constructors to only write code once
-function Book(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.getSummary = function() {
-        return `${this.title} was written by ${this.author} in ${this.year}`
-    };
+    static topBookStore() {
+        return 'Barnes & Noble';
+    }
 }
 
-//instantiate object:
-const bookThree = new Book();
-//when you create a new object, it runs whatever is in the Book constructor.
-const bookFour = new Book('Title', 'Author', 'year')
+//instantiate an object:
+const bookOne = new Book('Book One', 'John', '2013')
+//static methods --> method in a class that can be used without instantiating an object. The stati method can't be run on an object, it is instead run on the class. 
+
+class Magazine extends Book {
+    constructor(title, author, year, month) {
+        super(title,author,year);
+        this.month = month;
+    }
+}
+
+const mag1 = new Magazine('Mag One', "Jeff", "2018", 'Jan');
+
+console.log(Book.topBookStore()); //prints out B&N from above 
+console.log(mag1);
+console.log(mag1.getSummary());
