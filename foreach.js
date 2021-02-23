@@ -1,119 +1,132 @@
-// function holler() {
-//     console.log('HEY YOU');
-// }
+// Write a function called doubleValues which accepts an array and returns a new array with all the values in the array passed to the function doubled
+function doubleValues(array) {
+    let doubledArray = [];
+    array.forEach(el => {
+        doubledArray.push(el*2);
+    });
+    return doubledArray;
+};
 
-// const whisper = function() {
-//     console.log('I have a secret');
-// }
+// Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
+function onlyEvenValues(array) {
+    let evensArray = [];
+    array.forEach(el => {
+        if (el % 2 == 0) {
+            evensArray.push(el);
+        };
+    });
+    return evensArray;
+};
 
-// function add(x,y) {
-//     return x + y;
-// }
+// Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
+function showFirstAndLast(array) {
+    let newStrings = []
+    array.forEach(el => {
+        newStrings.push(el[0]+el[el.length -1])
+    })
+    return newStrings;
+}
 
-// function subract(x,y) {
-//     return x - y;
-// }
+// Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object
+function addKeyAndValue(objArr,key,val) {
+    let newObjArr = [];
+    objArr.forEach(obj => {
+        newObjArr.push([{ ...obj, key:val }]);
+    });
+    return newObjArr
+}
 
-// function multiply(x,y) {
-//     return x * y;
-// }
+// Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
+function vowelCount(string) {
+    let counter = {};
+    let str = Array.from(string.toLowerCase());
+    let vowels = 'aeiou';
 
-// function divide(x,y) {
-//     return x / y;
-// }
+    str.forEach(letter => {
+        if (!counter[letter] && vowels.includes(letter)) {
+            counter[letter] = 1
+        } else if (counter[letter] && vowels.includes(letter)){
+            counter[letter] += 1
+        }
+    })
 
-// const mathFuncs = [add, subtract, multiply, divide];
-// // call a specific function like mathFuncs[3](4,5) = 0.8;
-// // the most important thing to take away is that we can pass a function as an argument;
+    return counter;
+}
 
-// function doMath(a,b,mathFunc) {
-//     return mathFunc(a,b)
-// };
+// Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled
+function doubleValuesWithMap(array) {
+    let newArray = [];
+    array.map(val => {
+        newArray.push(val*2);
+    });
 
-//callbacks review
+    return newArray;
+}
 
-// function doAllMath(a,b,mathFuncs) {
-//     for (let func of mathFuncs) {
-//         console.log(func(a,b));
-//     }
-// };
+// Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
+function valTimesIndex(array) {
+    let newArr = [];
+    array.map((el,i) => {
+        newArr.push(el*i);
+    });
 
-//build our own forEach 
+    return newArr;
+}
 
-// let colors = ['red','green','blue','black'];
+// Write a function called extractKey which accepts an array of objects and some key and returns a new array with the value of that key in each object.
+function extractKey(objArr, key) {
+    let newArr = [];
+    objArr.map(obj => {
+        newArr.push(obj[key]);
+    });
+    return newArr;
+}
 
-// function myForEach(array, callback) {
-//     for (let i = 0; i < array.length; i++) {
-//         callback(array[i], i);
-//     }
-// };
+// Write a function called extractFullName which accepts an array of objects and returns a new array with the value of the key with a name of “first” and the value of a key with the name of “last” in each object, concatenated together with a space.
+function extractFullName(objArr) {
+    return objArr.map(obj => (obj.first + ' ' + obj.last))
+}
 
-// myForEach(colors, function(color, i) {
-//     console.log(color.toUpperCase, 'at index of: ', i);
-// });
+// Write a function called filterByValue which accepts an array of objects and a key and returns a new array with all the objects that contain that key.
+function filterByValue(arrObjs, key) {
+    let newArr =[];
+    arrObjs.filter(obj => {
+        if (obj[key]) {
+            newArr.push(obj);
+        }
+    })
+    return newArr;
+}
 
+// Write a function called find which accepts an array and a value and returns the first element in the array that has tthat has the same value as the second parameter or undefined if the value is not found in the array.
+const find = (array, value) => {
+   return array.filter(item => (item === value))[0]
+}
 
-// map array method:
+// Write a function called findInObj which accepts an array of objects, a key, and some value to search for and returns the first found value in the array.
+const findInObj = (objArr,key,val) => {
+    return objArr.filter(obj => {
+        if (obj[key] == val) {
+            return obj[key]
+        }
+    })[0]
+}
 
-// map is a very useful array method:
-// const numbers = [21, 37, 64, 99, 142];
+// Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
+const removeVowels = (string) => {
+    let str = string.toLowerCase().split('') //turn into an array
+    let vowels = 'aeiou';
+    let newStr = '';
+    str.filter(st => {
+        if (!(vowels.includes(st))) {
+            newStr += st;
+        }
+    })
 
-// const negatives = numbers.map(function(num) {
-//     return num * -1;
-// });
-
-// const doubles = numbers.map(function(num) {
-//     return num * 2;
-// });
-
-// const todos = [
-//     {
-//         id: 1,
-//         text: 'walk the dog',
-//         priority: 'high',
-//     },
-//     {
-//         id: 2,
-//         text: 'feed the dog',
-//         priority: 'medium',
-//     },
-
-// ];
-
-// // const todoText = todos.map(function(todo) {
-// //     return todo.text;
-// // });
-
-// // own version of Map
-
-// function myMap(arr, callback) {
-//     const mappedArr = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         mappedArr.push(callback(arr[i], i, arr));
-//     }
-//     return mappedArr;
-// }
-
-// const priorities = myMap(todos, function(todo) {
-//     return todo.priority;
-// })
+    return newStr;
+}
 
 
-// const numbers = [15, 25, 45, 33, 12, 66, 78, 99, 100]
-
-// const greaterThanFifteen = numbers.filter(function(number) {
-//     return number > 15;
-// });
-
-// function myFilter(arr, callback) {
-//     const filteredArr = [];
-//     for (let i = 0; i < arr.length; i++) {
-//        if (callback(arr[i], i, arr)) {
-//            filteredArr.push(arr[i]);
-//        }
-//     }
-//     return filteredArr;
-// }
 
 const nums = [2, 4, 6, 8, 10]
 
@@ -290,3 +303,5 @@ function Book(title, author, year) {
 const bookThree = new Book();
 //when you create a new object, it runs whatever is in the Book constructor.
 const bookFour = new Book('Title', 'Author', 'year')
+
+
