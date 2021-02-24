@@ -126,6 +126,12 @@ const removeVowels = (string) => {
     return newStr;
 }
 
+// Write a function called doubleOddNumbers which accepts an array and returns a new array with all of the odd numbers doubled (HINT - you can use map and fitler to double and then filter the odd numbers).
+const doubleOddNumbers = (array) => {
+    return array.filter(number => {
+        return number % 2 !== 0
+    }).map(val => val*2)
+}
 
 
 const nums = [2, 4, 6, 8, 10]
@@ -360,14 +366,12 @@ class Book {
     }
 }
 
-<<<<<<< HEAD
 //instantiate object:
 const bookThree = new Book();
 //when you create a new object, it runs whatever is in the Book constructor.
 const bookFour = new Book('Title', 'Author', 'year')
 
 
-=======
 //instantiate an object:
 const bookOne = new Book('Book One', 'John', '2013')
 //static methods --> method in a class that can be used without instantiating an object. The stati method can't be run on an object, it is instead run on the class. 
@@ -384,4 +388,3 @@ const mag1 = new Magazine('Mag One', "Jeff", "2018", 'Jan');
 console.log(Book.topBookStore()); //prints out B&N from above 
 console.log(mag1);
 console.log(mag1.getSummary());
->>>>>>> ac4c7d05ab24713a0e6a3e394e372dce6870b058
