@@ -133,6 +133,19 @@ const doubleOddNumbers = (array) => {
     }).map(val => val*2)
 }
 
+// Write a function called findUserByUsername which accepts an array of objects, each with a key of username, and a string. The function should return the first object with the key of username that matches the string passed to the function. If the object is not found, return undefined.
+
+const findUserByUsername = (arrObjs, str) => {
+    return arrObjs.find(obj => {
+        return obj.str === str;
+    });
+}
+
+// Write a function called removeUser which accepts an array of objects, each with a key of username, and a string. The function should remove the object from the array. If the object is not found, return undefined.
+
+const removeUser = (arrObjs, string) => {
+    
+}
 
 const nums = [2, 4, 6, 8, 10]
 
